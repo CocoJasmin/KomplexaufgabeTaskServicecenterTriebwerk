@@ -40,6 +40,7 @@ public class Sensor {
         for (ISensorChangedListener serviceCenter : serviceCenterObserver) {
             serviceCenter.updateSensorStatus(this.getSensorArea().getEngine(), parameter);
         }
+        System.out.println("\tThe ERROR occurs in engine: " + getSensorArea().getEngine());
     }
 
     public ArrayList<TelemetryValue> getTelemetryValueList() {

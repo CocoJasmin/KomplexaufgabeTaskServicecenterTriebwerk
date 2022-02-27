@@ -37,7 +37,6 @@ public class Airplane {
                         parameter.setMaximum(minAndMax.get("Maximum"));
                         setParameterID(parameter, parameterID);
                         setRandomValidValue(parameter);
-                        // System.out.println("ID: " + parameter.getID() + " MIn: " + parameter.getMinimum() + " max. " + parameter.getMaximum() + " Value: " + parameter.getValue());
                     }
                 }
             }
@@ -78,9 +77,7 @@ public class Airplane {
                 for (int telemetryValueCount = 0; telemetryValueCount < 5; telemetryValueCount++) {
                     for (Engine engine : this.enginesList) {
                         parameter = engine.getSensorAreaList().get(sensorAreaCount).getSensorList().get(sensorListCount).getTelemetryValueList().get(telemetryValueCount);
-                        System.out.print("Old Value: " + parameter.getValue());
                         parameter.setNewValue();
-                        System.out.println(" New Value: " + parameter.getValue());
                     }
                 }
             }

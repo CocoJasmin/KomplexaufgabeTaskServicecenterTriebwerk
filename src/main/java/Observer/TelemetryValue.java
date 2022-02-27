@@ -55,21 +55,24 @@ public class TelemetryValue {
 
     public void setNewValue() {
         double probabilityNumber = Math.random();
+        System.out.println("Eingetroffene WKT:" + probabilityNumber);
         if (probabilityNumber < 0.05) {
             if (probabilityNumber < 0.03) {
                 if (probabilityNumber < 0.01) {
                     valueRangeExceeded(1.2);
-                }
-                valueRangeExceeded(1.1);
-            }
-            valueRangeExceeded(1.05);
+                } else valueRangeExceeded(1.1);
+            } else valueRangeExceeded(1.05);
         } else {
             setValue();
         }
     }
 
     public void valueRangeExceeded(double percentage) {
+        System.out.println("WARNING:");
+        System.out.println("\tIn Parameter: " + getID());
+        System.out.println("\t- Old Value: " + (int) getValue());
         this.value = this.maximum * percentage;
+        System.out.println("\t- New value  " + (int) getValue() + " exceeds the maximum value of " + getMaximum() + " by " + (int) ((percentage - 1) * 100) + "%.");
         this.sensor.notifyParameterValueExceeded(this);
     }
 }
