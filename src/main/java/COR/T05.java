@@ -13,7 +13,7 @@ public class T05 extends Team {
         ArrayList<String> responsibleForCodes = new ArrayList<>();
         responsibleForCodes.add("C12");
         if (responsibleForCode(codeID, responsibleForCodes)) {
-            System.out.println("All members of team T05 need to come immediately  because of the error code "+ codeID +"!");
+            System.out.println("All members of team T05 need to come immediately  because of the error code " + codeID + "!");
             for (Smartphone smartphone : getSmartphonesTeamMembers()) {
                 smartphone.notifyAboutMeeting();
             }

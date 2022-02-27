@@ -2,15 +2,14 @@ package State;
 
 public class Smartphone {
     private ISmartphoneState state;
-
-    public Employe getOwner() {
-        return owner;
-    }
-
     private Employe owner;
 
     public Smartphone() {
         this.owner = new Employe();
+    }
+
+    public Employe getOwner() {
+        return owner;
     }
 
     public ISmartphoneState getState() {

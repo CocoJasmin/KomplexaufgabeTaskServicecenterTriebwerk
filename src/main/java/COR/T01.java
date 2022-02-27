@@ -19,13 +19,13 @@ public class T01 extends Team {
         responsibleForCodes.add("C07");
         responsibleForCodes.add("C08");
         if (responsibleForCode(codeID, responsibleForCodes)) {
-            System.out.println("All members of team T01 need to come immediately  because of the error code "+ codeID +"!");
+            System.out.println("All members of team T01 need to come immediately  because of the error code " + codeID + "!");
             for (Smartphone smartphone : getSmartphonesTeamMembers()) {
                 smartphone.notifyAboutMeeting();
             }
-            if (!(codeID.equals("C01")|| codeID.equals("C03"))) {
+            if (!(codeID.equals("C01") || codeID.equals("C03"))) {
                 super.handleCode(codeID);
             }
-        }else super.handleCode(codeID);
+        } else super.handleCode(codeID);
     }
 }

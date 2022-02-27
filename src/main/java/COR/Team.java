@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Team {
     private Team successorTeam;
     private ArrayList<Smartphone> smartphonesTeamMembers;
+    private boolean teamIsResponsible;
 
     public boolean isTeamIsResponsible() {
         return teamIsResponsible;
@@ -16,8 +17,6 @@ public class Team {
     public void setTeamIsResponsible(boolean teamIsResponsible) {
         this.teamIsResponsible = teamIsResponsible;
     }
-
-    private boolean teamIsResponsible;
 
     public void handleCode(String codeID) {
         if (getSuccessor() != null) {
@@ -28,9 +27,9 @@ public class Team {
     }
 
     protected boolean responsibleForCode(String codeID, ArrayList<String> codes) {
-        if(codes.contains(codeID))
-        return teamIsResponsible=true;
-        else return teamIsResponsible=false;
+        if (codes.contains(codeID))
+            return teamIsResponsible = true;
+        else return teamIsResponsible = false;
     }
 
     public Team getSuccessor() {
