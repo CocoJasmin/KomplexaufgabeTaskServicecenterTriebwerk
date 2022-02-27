@@ -31,13 +31,13 @@ public class Airplane {
                     System.out.println();
                     System.out.println();
                     minAndMax = getRandomMinAndMax();
-                    for (Engine engine : this.getEnginesList()) {
+                    for (Engine engine : this.enginesList) {
                         parameter = engine.getSensorAreaList().get(sensorAreaCount).getSensorList().get(sensorListCount).getTelemetryValueList().get(telemetryValueCount);
                         parameter.setMinimum(minAndMax.get("Minimum"));
                         parameter.setMaximum(minAndMax.get("Maximum"));
                         setParameterID(parameter, parameterID);
                         setRandomValidValue(parameter);
-                        System.out.println("ID: " + parameter.getID() + " MIn: " + parameter.getMinimum() + " max. " + parameter.getMaximum() + " Value: " + parameter.getValue());
+                        // System.out.println("ID: " + parameter.getID() + " MIn: " + parameter.getMinimum() + " max. " + parameter.getMaximum() + " Value: " + parameter.getValue());
                     }
                 }
             }
@@ -71,6 +71,21 @@ public class Airplane {
         parameter.setValue();
     }
 
+    public void setNewParameterValues() {
+        TelemetryValue parameter;
+        for (int sensorAreaCount = 0; sensorAreaCount < 5; sensorAreaCount++) {
+            for (int sensorListCount = 0; sensorListCount < 10; sensorListCount++) {
+                for (int telemetryValueCount = 0; telemetryValueCount < 5; telemetryValueCount++) {
+                    for (Engine engine : this.enginesList) {
+                        parameter = engine.getSensorAreaList().get(sensorAreaCount).getSensorList().get(sensorListCount).getTelemetryValueList().get(telemetryValueCount);
+                        System.out.print("Old Value: " + parameter.getValue());
+                        parameter.setNewValue();
+                        System.out.println(" New Value: " + parameter.getValue());
+                    }
+                }
+            }
+        }
+    }
 
     public ArrayList<Engine> getEnginesList() {
         return enginesList;

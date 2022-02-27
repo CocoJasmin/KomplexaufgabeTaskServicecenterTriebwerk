@@ -6,7 +6,7 @@ public class TelemetryValue {
     private int minimum;
     private int maximum;
     private String ID;
-    private int value;
+    private double value;
     private Sensor sensor;
 
     public TelemetryValue() {
@@ -14,10 +14,10 @@ public class TelemetryValue {
 
     public void setValue() {
         Random rand = new Random();
-        this.value = (rand.nextInt(maximum - minimum + 1) + minimum);
+        this.value = rand.nextInt(maximum - minimum + 1) + minimum;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -53,8 +53,23 @@ public class TelemetryValue {
         this.maximum = maximum;
     }
 
-    public void valueRangeExceeded(float percentage) {
-        this.value *= percentage;
+    public void setNewValue() {
+        double probabilityNumber = Math.random();
+        if (probabilityNumber < 0.05) {
+            if (probabilityNumber < 0.03) {
+                if (probabilityNumber < 0.01) {
+                    valueRangeExceeded(1.2);
+                }
+                valueRangeExceeded(1.1);
+            }
+            valueRangeExceeded(1.05);
+        } else {
+            setValue();
+        }
+    }
+
+    public void valueRangeExceeded(double percentage) {
+        this.value = this.maximum * percentage;
         this.sensor.notifyParameterValueExceeded(this);
     }
 }
